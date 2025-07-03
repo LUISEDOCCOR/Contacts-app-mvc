@@ -10,5 +10,5 @@
     >
     <title>App Contactos</title>
 </head>
-<body class="w-full max-w-4xl mx-auto py-12">
+<body class="w-full max-w-4xl mx-auto py-12 px-6 xl:px-0">
 <!-- Contenido -->

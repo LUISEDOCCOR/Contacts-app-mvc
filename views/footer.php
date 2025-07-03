@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     document.getElementById("btn-change-theme").addEventListener("click",(e) => {
         const $html = document.documentElement
         const $icon = document.getElementById("icon-theme")
@@ -11,6 +11,6 @@
             $icon.classList.replace("fa-moon", "fa-sun")
         }
     })
-</script>
+</script> -->
 </body>
 </html>

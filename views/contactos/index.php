@@ -4,7 +4,7 @@
             <h2 class="text-2xl font-bold">Añadir Contacto</h2>
             <span class=" text-neutral-500" >Ingresa el nombre y número del nuevo contacto</span>
         </div>
-        <form action="" class="grid grid-cols-2 gap-4">
+        <form action="" class="grid gap-4 grid-cols-1 xl:grid-cols-2">
             <label class="space-y-2" for="nombre_contacto">
                 <span class="font-semibold">Nombre</span>
                 <input
@@ -26,8 +26,9 @@
                 >
             </label>
             <button
-                class="col-span-2 bg-black rounded-md text-white
-                px-4 py-2 font-bold hover:opacity-75 transition-opacity"
+                class="bg-black rounded-md text-white
+                px-4 py-2 font-bold hover:opacity-75 transition-opacity
+                col-span-1 xl:col-span-2"
                 type="submit"
             >
                 Agregar
@@ -39,30 +40,38 @@
             <h2 class="text-2xl font-bold">Lista de Contactos</h2>
             <span class=" text-neutral-500" >Estos son todos tus contactos</span>
         </div>
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-4 h-[30vh] overflow-hidden overflow-y-auto">
             <!-- card -->
-            <div class="border-neutral-400 border rounded-md p-3 flex justify-between items-center">
-                <div>
-                    <span class="text-lg font-semibold block">Luis Eduardo Ocegueda</span>
-                    <span class="text-neutral-700" >3311863182</span>
+           <?php for ($i = 0; $i < 7; $i++): ?>
+                <div
+                    class="border-neutral-400 border rounded-md p-3
+                    flex flex-col items-start gap-4 xl:items-center xl:flex-row
+                    xl:justify-between"
+                >
+                    <div>
+                        <span class="text-lg font-semibold block">Luis Eduardo Ocegueda</span>
+                        <span class="text-neutral-700" >3311863182</span>
+                    </div>
+                    <div class="flex gap-2 w-full justify-end xl:justify-center xl:w-auto">
+                        <a
+                            href="#"
+                            class="bg-red-400 aspect-square flex justify-center
+                            items-center rounded-md hover:opacity-75 transition-opacity w-9
+                            text-lg xl:text-xl xl:w-12"
+                        >
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                        <a
+                            href="#"
+                            class="bg-yellow-400 aspect-square flex justify-center
+                            items-center rounded-md hover:opacity-75 transition-opacity w-9
+                            text-lg xl:text-xl xl:w-12"
+                        >
+                            <i class="fa-solid fa-pencil"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="flex justify-center gap-2">
-                    <a
-                        href="#"
-                        class="bg-red-400 text-xl w-12 aspect-square flex justify-center
-                        items-center rounded-md hover:opacity-75 transition-opacity"
-                    >
-                        <i class="fa-solid fa-trash"></i>
-                    </a>
-                    <a
-                        href="#"
-                        class="bg-yellow-400 text-xl w-12 aspect-square flex justify-center
-                        items-center rounded-md hover:opacity-75 transition-opacity"
-                    >
-                        <i class="fa-solid fa-pencil"></i>
-                    </a>
-                </div>
-            </div
+            <?php endfor; ?>
         </div>
     </section>
 </main>
