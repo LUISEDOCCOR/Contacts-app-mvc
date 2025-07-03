@@ -3,27 +3,80 @@ require_once "models/ContactoModel.php";
 
 class ContactoController
 {
-    private function render_view_home($view)
+    private function render_view($view, $error = "", $contacto = [])
     {
+        if ($view == "index.php") {
+            $contactos = ContactoModel::obtenerTodos();
+        }
+
         require "views/header.php";
         require "views/contactos/" . $view;
         require "views/footer.php";
     }
-
     public function inicio()
     {
-        $this->render_view_home("index.php");
+        $this->render_view("index.php");
     }
     public function editar($id)
     {
-        $this->render_view_home("editar.php");
+        $error = "";
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nombre = $_POST["nombre_contacto"] ?? "";
+            $numero = $_POST["numero_contacto"] ?? "";
+            $error = "";
+
+            if (empty($nombre) || empty($numero)) {
+                $error = "Todos los campos son necesarios";
+            } else {
+                $filasAfectadas = ContactoModel::editar($id, $nombre, $numero);
+                if ($filasAfectadas <= 0) {
+                    $error = "Hubo un error";
+                } else {
+                    header("Location: index.php");
+                    exit();
+                }
+            }
+        }
+
+        $contacto = ContactoModel::obtenerById($id);
+        if (!$contacto) {
+            header("Location: index.php");
+            exit();
+        }
+
+        $this->render_view("editar.php", $error, $contacto);
     }
     public function crear()
     {
-        $this->render_view_home("index.php");
+        $nombre = $_POST["nombre_contacto"] ?? "";
+        $numero = $_POST["numero_contacto"] ?? "";
+        $error = "";
+
+        if (empty($nombre) || empty($numero)) {
+            $error = "Todos los campos son necesarios";
+        } else {
+            $filasAfectadas = ContactoModel::crear($nombre, $numero);
+            if ($filasAfectadas <= 0) {
+                $error = "Hubo un error";
+            } else {
+                header("Location: index.php");
+                exit();
+            }
+        }
+
+        $this->render_view("index.php", $error);
     }
     public function borrar($id)
     {
-        $this->render_view_home("index.php");
+        $error = "";
+        $filasAfectadas = ContactoModel::borrar($id);
+        if ($filasAfectadas <= 0) {
+            $error = "No se borro";
+        } else {
+            header("Location: index.php");
+            exit();
+        }
+        $this->render_view("index.php", $error);
     }
 }

@@ -2,7 +2,7 @@
 CREATE DATABASE app_contactos;
 USE app_contactos;
 CREATE TABLE IF NOT EXISTS contactos (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255),
     numero VARCHAR(255)
-)
+);

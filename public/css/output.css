@@ -599,6 +599,10 @@ video {
   max-height: 40vhs;
 }
 
+.max-h-\[30vh\] {
+  max-height: 30vh;
+}
+
 .w-12 {
   width: 3rem;
 }
