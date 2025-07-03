@@ -1,6 +1,6 @@
 <main>
     <section class="border-neutral-400 border rounded-md p-4 space-y-5" >
-        <div class="flex justify-between">
+        <div class="flex justify-between flex-col-reverse gap-4 xl:gap-0 xl:flex-row">
             <div>
                 <h2 class="text-2xl font-bold">Editar Contacto</h2>
                 <span class=" text-neutral-500" >Ingresa el nuevo nombre y número del contacto contacto </span>

@@ -639,6 +639,10 @@ video {
   flex-direction: column;
 }
 
+.flex-col-reverse {
+  flex-direction: column-reverse;
+}
+
 .items-start {
   align-items: flex-start;
 }
@@ -860,6 +864,10 @@ video {
 
   .xl\:justify-between {
     justify-content: space-between;
+  }
+
+  .xl\:gap-0 {
+    gap: 0px;
   }
 
   .xl\:px-0 {
