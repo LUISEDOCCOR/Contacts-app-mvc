@@ -1,8 +1,17 @@
 <main>
     <section class="border-neutral-400 border rounded-md p-4 space-y-5" >
-        <div class="space-y-2">
-            <h2 class="text-2xl font-bold">Editar Contacto</h2>
-            <span class=" text-neutral-500" >Ingresa el nuevo nombre y número del contacto contacto</span>
+        <div class="flex justify-between">
+            <div>
+                <h2 class="text-2xl font-bold">Editar Contacto</h2>
+                <span class=" text-neutral-500" >Ingresa el nuevo nombre y número del contacto contacto </span>
+            </div>
+            <a
+                class="block underline underline-offset-2 text-neutral-500"
+                href="index.php"
+            >
+                <i class="fa-solid fa-backward"></i>
+                Regresar
+            </a>
         </div>
         <form
             action="index.php?action=editar&id=<?= $contacto["id"] ?>"

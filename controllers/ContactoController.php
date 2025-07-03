@@ -31,7 +31,7 @@ class ContactoController
             } else {
                 $filasAfectadas = ContactoModel::editar($id, $nombre, $numero);
                 if ($filasAfectadas <= 0) {
-                    $error = "Hubo un error";
+                    $error = "No se modificó ningún contacto";
                 } else {
                     header("Location: index.php");
                     exit();
