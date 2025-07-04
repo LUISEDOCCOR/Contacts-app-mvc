@@ -1,3 +1,37 @@
+<?php
+$imagen_perfil =
+    "https://ui-avatars.com/api/?background=random&name=" .
+    $_SESSION["usuario_nombre"]; ?>
+
+<header class="mb-10 flex items-center justify-between">
+    <h1 class="text-2xl font-bold">
+        <i class="fa-solid fa-address-book"></i>
+        App Contactos
+    </h1>
+    <ul
+        class="flex gap-2 text-neutral-500 font-semibold flex-col
+        items-end xl:items-center xl:flex-row"
+    >
+        <li>
+            <?= $_SESSION["usuario_correo"] ?>
+        </li>
+        <li>
+            <img
+                src="<?= $imagen_perfil ?>"
+                alt="imagen-perfil"
+                class="rounded-full w-8 border border-neutral-400"
+            >
+        </li>
+        <li>
+            <a
+                href="index.php?action=logout"
+                class="underline underline-offset-2 hover:text-red-500 transition-colors"
+            >
+                Cerrar sesión
+            </a>
+        </li>
+    </ul>
+</header>
 <main class="space-y-8">
     <section class="border-neutral-400 border rounded-md p-4 space-y-5" >
         <div class="space-y-2">

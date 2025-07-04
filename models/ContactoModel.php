@@ -1,12 +1,8 @@
 <?php
+require_once "BaseModel.php";
 
-class ContactoModel
+class ContactoModel extends BaseModel
 {
-    private static function conectar_db()
-    {
-        $conn = new mysqli("localhost", "root", "12345678", "app_contactos");
-        return $conn;
-    }
     public static function crear($nombre, $numero)
     {
         $conn = self::conectar_db();

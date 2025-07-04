@@ -5,6 +5,11 @@ class ContactoController
 {
     private function render_view($view, $error = "", $contacto = [])
     {
+        if (!isset($_SESSION["usuario_id"])) {
+            header("Location: index.php?action=signup");
+            exit();
+        }
+
         if ($view == "index.php") {
             $contactos = ContactoModel::obtenerTodos();
         }
