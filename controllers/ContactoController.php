@@ -5,8 +5,13 @@ class ContactoController
 {
     private function render_view($view, $error = "", $contacto = [])
     {
+        if (!isset($_SESSION["usuario_id"])) {
+            header("Location: index.php?action=signup");
+            exit();
+        }
+
         if ($view == "index.php") {
-            $contactos = ContactoModel::obtenerTodos();
+            $contactos = ContactoModel::obtenerTodos($_SESSION["usuario_id"]);
         }
 
         require "views/header.php";
@@ -29,7 +34,12 @@ class ContactoController
             if (empty($nombre) || empty($numero)) {
                 $error = "Todos los campos son necesarios";
             } else {
-                $filasAfectadas = ContactoModel::editar($id, $nombre, $numero);
+                $filasAfectadas = ContactoModel::editar(
+                    $id,
+                    $nombre,
+                    $numero,
+                    $_SESSION["usuario_id"]
+                );
                 if ($filasAfectadas <= 0) {
                     $error = "No se modificó ningún contacto";
                 } else {
@@ -39,7 +49,7 @@ class ContactoController
             }
         }
 
-        $contacto = ContactoModel::obtenerById($id);
+        $contacto = ContactoModel::obtenerById($id, $_SESSION["usuario_id"]);
         if (!$contacto) {
             header("Location: index.php");
             exit();
@@ -56,7 +66,11 @@ class ContactoController
         if (empty($nombre) || empty($numero)) {
             $error = "Todos los campos son necesarios";
         } else {
-            $filasAfectadas = ContactoModel::crear($nombre, $numero);
+            $filasAfectadas = ContactoModel::crear(
+                $nombre,
+                $numero,
+                $_SESSION["usuario_id"]
+            );
             if ($filasAfectadas <= 0) {
                 $error = "Hubo un error";
             } else {
@@ -70,7 +84,7 @@ class ContactoController
     public function borrar($id)
     {
         $error = "";
-        $filasAfectadas = ContactoModel::borrar($id);
+        $filasAfectadas = ContactoModel::borrar($id, $_SESSION["usuario_id"]);
         if ($filasAfectadas <= 0) {
             $error = "No se borro";
         } else {
