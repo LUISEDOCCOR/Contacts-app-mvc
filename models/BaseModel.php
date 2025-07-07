@@ -5,10 +5,10 @@ abstract class BaseModel
     protected static function conectar_db()
     {
         $conn = new mysqli(
-            "localhost",
-            "root",
-            "12345678",
-            "app_contactos_develop"
+            $_ENV["DB_HOST"],
+            $_ENV["DB_USER"],
+            $_ENV["DB_PSSW"],
+            $_ENV["DB_DATABASE"]
         );
         return $conn;
     }

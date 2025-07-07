@@ -1,8 +1,12 @@
 <?php
 require_once "controllers/ContactoController.php";
 require_once "controllers/AuthController.php";
+require_once __DIR__ . "/vendor/autoload.php";
 
 session_start();
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 $action = $_GET["action"] ?? "inicio";
 $id = $_GET["id"] ?? null;
