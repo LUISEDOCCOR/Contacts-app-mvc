@@ -1,0 +1,17 @@
+{
+    "name": "luiseduardooceguedacortes/02",
+    "autoload": {
+        "psr-4": {
+            "Luiseduardooceguedacortes\\02\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Luis Eduardo Ocegueda",
+            "email": "luiseduardoocegueda@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
